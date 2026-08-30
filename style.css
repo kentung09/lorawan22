@@ -1,0 +1,1211 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+
+  --bg: #07111f;
+
+  --panel: rgba(15, 29, 48, 0.72);
+
+  --border: rgba(255,255,255,0.08);
+
+  --text: #f8fafc;
+
+  --muted: #94a3b8;
+
+  --cyan: #38bdf8;
+
+  --blue: #60a5fa;
+
+  --green: #34d399;
+
+  --purple: #a78bfa;
+
+  --gold: #fbbf24;
+
+}
+
+
+body {
+
+  font-family:
+    "Inter",
+    Arial,
+    sans-serif;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      #102d4a 0,
+      transparent 35%
+    ),
+
+    radial-gradient(
+      circle at 90% 20%,
+      #1c1740 0,
+      transparent 30%
+    ),
+
+    var(--bg);
+
+  color: var(--text);
+
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.background-glow {
+
+  position: fixed;
+
+  width: 350px;
+
+  height: 350px;
+
+  border-radius: 50%;
+
+  filter: blur(100px);
+
+  opacity: 0.12;
+
+  pointer-events: none;
+
+}
+
+
+.glow-1 {
+
+  background: #38bdf8;
+
+  top: 10%;
+
+  left: -150px;
+
+}
+
+
+.glow-2 {
+
+  background: #8b5cf6;
+
+  right: -150px;
+
+  bottom: 10%;
+
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+
+  position: relative;
+
+  z-index: 2;
+
+  padding: 22px 5%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  border-bottom:
+    1px solid var(--border);
+
+  background:
+    rgba(5,15,28,0.82);
+
+  backdrop-filter:
+    blur(20px);
+
+}
+
+
+.brand {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+}
+
+
+.brand-icon {
+
+  width: 55px;
+
+  height: 55px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 16px;
+
+  font-size: 28px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0ea5e9,
+      #6366f1
+    );
+
+  box-shadow:
+    0 10px 30px
+    rgba(14,165,233,0.25);
+
+}
+
+
+.brand h1 {
+
+  font-size: 22px;
+
+  font-weight: 800;
+
+  letter-spacing: -0.5px;
+
+}
+
+
+.brand h1 span {
+
+  color: var(--cyan);
+
+}
+
+
+.brand p {
+
+  margin-top: 5px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+
+}
+
+
+.header-right {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 25px;
+
+}
+
+
+.live-time {
+
+  text-align: right;
+
+}
+
+
+#clock {
+
+  font-size: 23px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+}
+
+
+#date {
+
+  color: var(--muted);
+
+  font-size: 11px;
+
+  margin-top: 3px;
+
+}
+
+
+.status {
+
+  padding: 9px 15px;
+
+  border-radius: 30px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: .5px;
+
+}
+
+
+.online-status {
+
+  background:
+    rgba(52,211,153,0.1);
+
+  color: var(--green);
+
+  border:
+    1px solid
+    rgba(52,211,153,0.2);
+
+}
+
+
+.status-dot {
+
+  display: inline-block;
+
+  width: 7px;
+
+  height: 7px;
+
+  background: var(--green);
+
+  border-radius: 50%;
+
+  margin-right: 6px;
+
+  box-shadow:
+    0 0 10px var(--green);
+
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+
+  width: 90%;
+
+  max-width: 1450px;
+
+  margin: auto;
+
+  padding: 35px 0 50px;
+
+}
+.welcome {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 28px;
+
+}
+
+
+.welcome-label {
+
+  font-size: 10px;
+
+  color: var(--cyan);
+
+  letter-spacing: 2px;
+
+  font-weight: 700;
+
+}
+
+
+.welcome h2 {
+
+  font-size: 34px;
+
+  margin-top: 8px;
+
+  letter-spacing: -1px;
+
+}
+
+
+.welcome h2 span {
+
+  color: var(--cyan);
+
+}
+
+
+.welcome p {
+
+  color: var(--muted);
+
+  font-size: 13px;
+
+  margin-top: 8px;
+
+}
+
+
+.station-badge {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 11px 16px;
+
+  border-radius: 30px;
+
+  background:
+    rgba(255,255,255,0.04);
+
+  border:
+    1px solid var(--border);
+
+  color: #cbd5e1;
+
+  font-size: 11px;
+
+}
+
+
+.pulse {
+
+  width: 8px;
+
+  height: 8px;
+
+  background: var(--green);
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 5px
+    rgba(52,211,153,0.1);
+
+}
+
+
+/* =========================
+   SENSOR CARDS
+========================= */
+
+.cards {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 16px;
+
+  margin-bottom: 18px;
+
+}
+
+
+.card {
+
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 20px;
+
+  min-height: 185px;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(20,38,62,0.85),
+      rgba(9,21,36,0.8)
+    );
+
+  border:
+    1px solid var(--border);
+
+  backdrop-filter:
+    blur(15px);
+
+  transition:
+    transform .25s,
+    border-color .25s;
+
+}
+
+
+.card:hover {
+
+  transform:
+    translateY(-4px);
+
+  border-color:
+    rgba(56,189,248,0.25);
+
+}
+
+
+.card::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 100px;
+
+  height: 100px;
+
+  border-radius: 50%;
+
+  background: var(--cyan);
+
+  filter: blur(70px);
+
+  opacity: .08;
+
+  right: -40px;
+
+  bottom: -40px;
+
+}
+
+
+.card-top {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  color: #64748b;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+}
+
+
+.sensor-icon {
+
+  width: 40px;
+
+  height: 40px;
+
+  border-radius: 12px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  font-size: 20px;
+
+}
+
+
+.temperature {
+  background: rgba(251,113,133,.12);
+}
+
+.humidity {
+  background: rgba(56,189,248,.12);
+}
+
+.pressure {
+  background: rgba(167,139,250,.12);
+}
+
+.wind {
+  background: rgba(52,211,153,.12);
+}
+
+.direction {
+  background: rgba(251,191,36,.12);
+}
+
+.rain {
+  background: rgba(96,165,250,.12);
+}
+
+
+.sensor-title {
+
+  color: #94a3b8;
+
+  margin-top: 18px;
+
+  font-size: 12px;
+
+}
+
+
+.sensor-value {
+
+  margin-top: 5px;
+
+  font-size: 35px;
+
+  font-weight: 800;
+
+}
+
+
+.sensor-value small {
+
+  font-size: 13px;
+
+  color: #64748b;
+
+  font-weight: 500;
+
+}
+
+
+.direction-value {
+
+  margin-top: 8px;
+
+  font-size: 25px;
+
+  font-weight: 800;
+
+  color: var(--gold);
+
+}
+
+
+.card-footer {
+
+  position: absolute;
+
+  bottom: 18px;
+
+  color: #475569;
+
+  font-size: 9px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+
+}
+.dashboard-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    1.8fr 1fr;
+
+  gap: 18px;
+
+}
+
+
+.panel {
+
+  border-radius: 20px;
+
+  padding: 22px;
+
+  background:
+    rgba(15,29,48,0.72);
+
+  border:
+    1px solid var(--border);
+
+  backdrop-filter:
+    blur(20px);
+
+}
+
+
+.panel-header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 20px;
+
+}
+
+
+.panel-label {
+
+  color: var(--cyan);
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+}
+
+
+.panel h3 {
+
+  margin-top: 5px;
+
+  font-size: 17px;
+
+}
+
+
+.live-badge {
+
+  padding: 7px 10px;
+
+  border-radius: 20px;
+
+  font-size: 9px;
+
+  color: var(--green);
+
+  background:
+    rgba(52,211,153,.08);
+
+}
+
+
+.live-badge span {
+
+  display: inline-block;
+
+  width: 5px;
+
+  height: 5px;
+
+  background: var(--green);
+
+  border-radius: 50%;
+
+  margin-right: 4px;
+
+}
+
+
+/* =========================
+   WEATHER
+========================= */
+
+.weather-display {
+
+  text-align: center;
+
+  padding: 10px;
+
+}
+
+
+.big-weather-icon {
+
+  font-size: 70px;
+
+  filter:
+    drop-shadow(
+      0 8px 20px
+      rgba(251,191,36,.15)
+    );
+
+}
+
+
+.weather-display h2 {
+
+  margin-top: 10px;
+
+  font-size: 24px;
+
+}
+
+
+.weather-display p {
+
+  margin-top: 5px;
+
+  color: var(--muted);
+
+  font-size: 11px;
+
+}
+
+
+.divider {
+
+  height: 1px;
+
+  background:
+    var(--border);
+
+  margin: 15px 0;
+
+}
+
+
+.system-list {
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+
+
+.system-row {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 10px 0;
+
+  font-size: 11px;
+
+  color: #cbd5e1;
+
+}
+
+
+.system-row > div {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+}
+
+
+.system-icon {
+
+  font-size: 15px;
+
+}
+
+
+.system-row strong {
+
+  font-size: 10px;
+
+}
+
+
+.online {
+
+  color: var(--green);
+
+}
+
+
+.offline {
+
+  color: #fb7185;
+
+}
+
+
+/* =========================
+   BOTTOM
+========================= */
+
+.bottom-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap: 15px;
+
+  margin-top: 18px;
+
+}
+
+
+.mini-panel {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 16px;
+
+  border-radius: 16px;
+
+  background:
+    rgba(15,29,48,0.55);
+
+  border:
+    1px solid var(--border);
+
+}
+
+
+.mini-icon {
+
+  font-size: 23px;
+
+}
+
+
+.mini-panel small {
+
+  display: block;
+
+  color: #64748b;
+
+  font-size: 8px;
+
+  letter-spacing: 1px;
+
+}
+
+
+.mini-panel strong {
+
+  display: block;
+
+  margin-top: 3px;
+
+  font-size: 11px;
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+  text-align: center;
+
+  padding: 25px;
+
+  color: #475569;
+
+  border-top:
+    1px solid var(--border);
+
+  font-size: 10px;
+
+}
+
+
+footer strong {
+
+  color: #94a3b8;
+
+}
+
+
+footer span {
+
+  margin: 0 7px;
+
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 1100px) {
+
+  .cards {
+
+    grid-template-columns:
+      repeat(2,1fr);
+
+  }
+
+  .bottom-grid {
+
+    grid-template-columns:
+      repeat(2,1fr);
+
+  }
+
+}
+
+
+@media(max-width: 850px) {
+
+  .header {
+
+    flex-direction: column;
+
+    gap: 20px;
+
+  }
+
+  .header-right {
+
+    width: 100%;
+
+    justify-content: space-between;
+
+  }
+
+  .welcome {
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 18px;
+
+  }
+
+  .dashboard-grid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+}
+
+
+@media(max-width: 550px) {
+
+  .container {
+
+    width: 94%;
+
+  }
+
+  .cards {
+
+    grid-template-columns: 1fr;
+
+  }
+
+  .bottom-grid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+  .welcome h2 {
+
+    font-size: 27px;
+
+  }
+
+  .brand h1 {
+
+    font-size: 17px;
+
+  }
+
+  .header-right {
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+  }
+
+  .live-time {
+
+    text-align: left;
+
+  }
+
+}
+/* =====================================================
+   LOGO HEADER
+===================================================== */
+
+.header-logos {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+}
+
+
+/* Kotak masing-masing logo */
+
+.header-logo {
+
+  width: 50px;
+
+  height: 50px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background:
+    rgba(255,255,255,0.05);
+
+  border:
+    1px solid
+    rgba(255,255,255,0.10);
+
+  padding: 5px;
+
+  transition:
+    all 0.3s ease;
+
+}
+
+
+/* Efek ketika mouse diarahkan */
+
+.header-logo:hover {
+
+  transform:
+    translateY(-3px);
+
+  border-color:
+    rgba(56,189,248,0.5);
+
+  box-shadow:
+    0 8px 25px
+    rgba(56,189,248,0.15);
+
+}
+
+
+/* Gambar logo */
+
+.header-logo img {
+
+  width: 150%;
+
+  height: 150%;
+
+  object-fit: contain;
+
+  display: block;
+
+}
+
+
+/* Garis pemisah */
+
+.logo-divider {
+
+  width: 1px;
+
+  height: 55px;
+
+  background:
+    rgba(255,255,255,0.15);
+
+  margin:
+    0 5px;
+
+}
+@media(max-width: 850px) {
+
+  .header-logos {
+
+    gap: 6px;
+
+  }
+
+  .header-logo {
+
+    width: 48px;
+
+    height: 48px;
+
+  }
+
+  .logo-divider {
+
+    height: 45px;
+
+  }
+
+}/* ===============================
+   TOMBOL KELUAR
+================================ */
+
+.logout-btn {
+
+  border: 1px solid rgba(255,255,255,0.15);
+
+  background: rgba(220,38,38,0.12);
+
+  color: #fca5a5;
+
+  padding: 11px 16px;
+
+  border-radius: 10px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+
+  white-space: nowrap;
+}
+
+.logout-btn:hover {
+
+  background: #dc2626;
+
+  color: white;
+
+  border-color: #dc2626;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(220,38,38,0.25);
+}
+
+.logout-btn:active {
+
+  transform: scale(0.96);
+
+}

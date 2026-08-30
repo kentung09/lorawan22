@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Smart Automatic Weather Station
+  </title>
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+</head>
+<body>
+<div class="background-glow glow-1"></div>
+<div class="background-glow glow-2"></div>
+<header class="header">
+
+  <!-- LOGO + JUDUL -->
+  <div class="brand">
+
+    <div class="brand-icon">
+      🌦️
+    </div>
+
+    <div>
+
+      <h1>
+        Smart Automatic
+        <span>Weather Station</span>
+      </h1>
+
+      <p>
+        IoT Environmental Monitoring System
+      </p>
+
+    </div>
+
+  </div>
+  <div class="header-right">
+    <div class="live-time">
+      <div id="clock">
+        00:00:00
+      </div>
+
+      <div id="date">
+        Loading date...
+      </div>
+    </div>
+    <div
+      id="systemStatus"
+      class="status online-status"
+    >
+
+      <span class="status-dot"></span>
+
+      SYSTEM ONLINE
+
+    </div>
+
+
+    <!-- PEMBATAS -->
+    <div class="logo-divider"></div>
+
+
+    <!-- ================= LOGO SEKOLAH ================= -->
+
+    <div class="header-logos">
+
+      <!-- LOGO SMKN 1 NGLEGOK -->
+      <div class="header-logo">
+
+        <img
+          src="logo-smkn.png"
+          alt="Logo SMKN 1 Nglegok"
+        >
+
+      </div>
+
+
+      <!-- LOGO TEKNIK ELEKTRONIKA INDUSTRI -->
+      <div class="header-logo">
+
+        <img
+          src="logo-tei.png"
+          alt="Logo Teknik Elektronika Industri"
+        >
+
+      </div>
+
+    </div>
+
+  </div><!-- TOMBOL KELUAR -->
+<button
+  class="logout-btn"
+  onclick="logoutDashboard()"
+>
+  🚪 KELUAR
+</button>
+
+</header>
+
+
+<!-- ================= CONTENT ================= -->
+
+<main class="container">
+
+
+  <!-- WELCOME -->
+
+  <section class="welcome">
+
+    <div>
+
+      <span class="welcome-label">
+        WEATHER MONITORING
+      </span>
+
+      <h2>
+        Kondisi Cuaca
+        <span>Real-Time</span>
+      </h2>
+
+      <p>
+        Data lingkungan dipantau secara langsung
+        melalui ESP32 dan komunikasi LoRa.
+      </p>
+
+    </div>
+
+    <div class="station-badge">
+
+      <span class="pulse"></span>
+
+      Weather Station Active
+
+    </div>
+
+  </section>
+
+  <section class="cards">
+
+
+    <!-- SUHU -->
+
+    <div class="card sensor-card">
+
+      <div class="card-top">
+
+        <div class="sensor-icon temperature">
+          🌡️
+        </div>
+
+        <span>
+          BME280
+        </span>
+
+      </div>
+
+      <p class="sensor-title">
+        Suhu
+      </p>
+
+      <div class="sensor-value">
+
+        <span id="suhu">
+          --
+        </span>
+
+        <small>
+          °C
+        </small>
+
+      </div>
+
+      <div class="card-footer">
+        Temperature
+      </div>
+
+    </div>
+
+    <div class="card sensor-card">
+
+      <div class="card-top">
+
+        <div class="sensor-icon humidity">
+          💧
+        </div>
+
+        <span>
+          BME280
+        </span>
+
+      </div>
+
+      <p class="sensor-title">
+        Kelembapan
+      </p>
+
+      <div class="sensor-value">
+
+        <span id="humidity">
+          --
+        </span>
+
+        <small>
+          %
+        </small>
+
+      </div>
+
+      <div class="card-footer">
+        Relative Humidity
+      </div>
+
+    </div>
+
+    <div class="card sensor-card">
+
+      <div class="card-top">
+
+        <div class="sensor-icon pressure">
+          🌬️
+        </div>
+
+        <span>
+          BME280
+        </span>
+
+      </div>
+
+      <p class="sensor-title">
+        Tekanan Udara
+      </p>
+
+      <div class="sensor-value">
+
+        <span id="pressure">
+          --
+        </span>
+
+        <small>
+          hPa
+        </small>
+
+      </div>
+
+      <div class="card-footer">
+        Atmospheric Pressure
+      </div>
+
+    </div>
+
+    <div class="card sensor-card">
+
+      <div class="card-top">
+
+        <div class="sensor-icon wind">
+          💨
+        </div>
+
+        <span>
+          ANEMOMETER
+        </span>
+
+      </div>
+
+      <p class="sensor-title">
+        Kecepatan Angin
+      </p>
+
+      <div class="sensor-value">
+
+        <span id="wind">
+          --
+        </span>
+
+        <small>
+          km/h
+        </small>
+
+      </div>
+
+      <div class="card-footer">
+        Wind Speed
+      </div>
+
+    </div>
+
+    <div class="card sensor-card">
+
+      <div class="card-top">
+
+        <div class="sensor-icon direction">
+          🧭
+        </div>
+
+        <span>
+          WIND VANE
+        </span>
+
+      </div>
+
+      <p class="sensor-title">
+        Arah Angin
+      </p>
+
+      <div class="direction-value">
+
+        <span id="windDirection">
+          --
+        </span>
+
+      </div>
+
+      <div class="card-footer">
+        Wind Direction
+      </div>
+
+    </div>
+
+
+    <div class="card sensor-card">
+
+      <div class="card-top">
+
+        <div class="sensor-icon rain">
+          🌧️
+        </div>
+
+        <span>
+          RAIN GAUGE
+        </span>
+
+      </div>
+
+      <p class="sensor-title">
+        Curah Hujan
+      </p>
+
+      <div class="sensor-value">
+
+        <span id="rainfall">
+          --
+        </span>
+
+        <small>
+          mm
+        </small>
+
+      </div>
+
+      <div class="card-footer">
+        Rainfall
+      </div>
+
+    </div>
+
+  </section>
+  <section class="dashboard-grid">
+    <div class="panel graph-panel">
+
+      <div class="panel-header">
+
+        <div>
+
+          <span class="panel-label">
+            ANALYTICS
+          </span>
+
+          <h3>
+            📈 Monitoring Cuaca
+          </h3>
+
+        </div>
+
+        <div class="live-badge">
+
+          <span></span>
+
+          LIVE
+
+        </div>
+
+      </div>
+
+      <canvas
+        id="weatherChart"
+      ></canvas>
+
+    </div>
+    <div class="panel weather-panel">
+
+      <div class="panel-header">
+
+        <div>
+
+          <span class="panel-label">
+            CURRENT CONDITION
+          </span>
+
+          <h3>
+            Kondisi Cuaca
+          </h3>
+
+        </div>
+
+      </div>
+
+
+      <div class="weather-display">
+
+        <div
+          id="weatherIcon"
+          class="big-weather-icon"
+        >
+          ☀️
+        </div>
+
+        <h2 id="condition">
+          MENUNGGU DATA
+        </h2>
+
+        <p>
+          Kondisi saat ini
+        </p>
+
+      </div>
+
+
+      <div class="divider"></div>
+
+
+      <div class="system-list">
+
+
+        <div class="system-row">
+
+          <div>
+            <span class="system-icon">
+              🖥️
+            </span>
+
+            ESP32 Sensor
+          </div>
+
+          <strong
+            id="sensorStatus"
+            class="online"
+          >
+            OFFLINE
+          </strong>
+
+        </div>
+
+
+        <div class="system-row">
+
+          <div>
+            <span class="system-icon">
+              🌐
+            </span>
+
+            ESP32 Gateway
+          </div>
+
+          <strong
+            id="gatewayStatus"
+            class="online"
+          >
+            OFFLINE
+          </strong>
+
+        </div>
+
+
+        <div class="system-row">
+
+          <div>
+            <span class="system-icon">
+              📡
+            </span>
+
+            LoRa 868 MHz
+          </div>
+
+          <strong
+            id="loraStatus"
+            class="online"
+          >
+            NOT CONNECTED
+          </strong>
+
+        </div>
+
+
+        <div class="system-row">
+
+          <div>
+            <span class="system-icon">
+              📶
+            </span>
+
+            Signal RSSI
+          </div>
+
+          <strong id="rssi">
+            --
+          </strong>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+  <section class="bottom-grid">
+
+
+    <div class="mini-panel">
+
+      <span class="mini-icon">
+        📡
+      </span>
+
+      <div>
+
+        <small>
+          KOMUNIKASI
+        </small>
+
+        <strong>
+          LoRa 868 MHz
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div class="mini-panel">
+
+      <span class="mini-icon">
+        🛰️
+      </span>
+
+      <div>
+
+        <small>
+          NODE SENSOR
+        </small>
+
+        <strong>
+          ESP32 + 4 Sensor
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div class="mini-panel">
+
+      <span class="mini-icon">
+        🌐
+      </span>
+
+      <div>
+
+        <small>
+          GATEWAY
+        </small>
+
+        <strong>
+          ESP32 Wi-Fi
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div class="mini-panel">
+
+      <span class="mini-icon">
+        🕐
+      </span>
+
+      <div>
+
+        <small>
+          UPDATE TERAKHIR
+        </small>
+
+        <strong id="updateTime">
+          --
+        </strong>
+
+      </div>
+
+    </div>
+
+
+  </section>
+
+</main>
+<footer>
+
+  <div>
+    <strong>
+      SMART AUTOMATIC WEATHER STATION
+    </strong>
+
+    <span>
+      •
+    </span>
+
+    IoT Monitoring System
+  </div>
+
+  <p>
+  SMKN 01 NGLEGOK
+    © 2026 Weather Station • ESP32 • LoRa • BME280
+  </p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
